@@ -1,5 +1,15 @@
 
-html, body, :global(#root) {
+html, body,:global(#root) {
   height: 100%;
+ 
 }
-
+ul,li:global(#root){
+  list-style: none;
+}
+html, body,div{
+   padding: 0;
+  margin:0
+}
+a{
+  text-decoration:none; 
+}
