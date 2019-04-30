@@ -1,0 +1,582 @@
+ul,li{
+    list-style: none;
+}
+.pageExplain{
+    height: 36px;
+    background: #F9F9F9;
+    font-size: 14px;
+    color: #999;
+    line-height: 36px;
+    border-bottom: 1px solid #EEEFF2;
+}
+.wrapper {
+    width: 1200px;
+    margin: auto;
+   
+}
+.head1{
+    margin:0;
+    margin-left:30px;
+    float:left;
+    font-size: 14px;
+    height:36px;
+    line-height:36px;
+}
+.pageExplainLink{
+    float:right;
+    margin-right:30px;
+}
+.a1{
+    display:inline-block;
+    margin-left:18px;
+    color:#999;
+    text-decoration: none;
+
+}
+/*
+头部搜索部分
+*/
+.headerWrap{
+    background-color: #FFF;
+    width: 100%;
+    /* clear:both; */
+    height:104px;
+}
+.headerWrap .header1{
+    margin:0 auto;
+    float:left;
+}
+.siteLogo{
+    width: 240px;
+    height: 60px;
+    float: left;
+    margin: 15px 10px auto 30px;
+}
+.siteAd{
+    width: 120px;
+    height: 70px;
+    float: left;
+    margin: 10px 10px auto 0;
+}
+.seachBar{
+    width: 500px;
+    float: left;
+    margin: 20px 0 0 20px;
+    position: relative;
+    z-index: 100;
+}
+.search{
+position:relative;
+}
+.tab{
+    position: absolute;
+    width: 60px;
+    height: 36px;
+    line-height: 36px;
+    margin: 3px 2px 0 0;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Microsoft YaHei";
+    background: #FFF;
+    text-indent: 10px;
+    border-right: none;
+    margin-left: 15px;
+}
+.tab,.l{
+    list-style: none;
+    padding: 0 1px;
+    /* height: 36px; */
+    line-height: 36px;
+    font-size: 14px;
+    background: #fff;
+    color: #666;
+}
+.arrow{
+    top: 17px;
+    transition: all 0.2s ease-in 0s;
+    
+    height: 0;
+    width: 0;
+    line-height: 0;
+    font-size: 0;
+    position: absolute;
+    right: 10px;
+    border: 3px dashed transparent;
+    border-top: 3px solid #999;
+    
+    
+
+}
+.sform{
+    border: 2px solid #2F97F0;
+    height: 36px;
+    padding: 2px;
+    border-radius: 30px;
+}
+.inputText{
+    font-size:12px;
+    width: 65.5%;
+    margin-left: 80px;
+    text-indent: 5px;
+    line-height: 24px;
+    color: #555;
+    width: 69%;
+    height: 24px;
+    float: left;
+    padding: 6px 1%;
+    border: none 0;
+}
+.inputSubmit{
+    float: left;
+    width: 62px;
+    height: 36px;
+    background: #2F97F0;
+    border: none;
+    line-height: 1;
+    color: #fff;
+    font-family: "Microsoft YaHei";
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 30px;
+}
+.keyword{
+    line-height: 20px;
+    color: #999;
+    width: 500px;
+    height: 20px;
+    margin-top: 4px;
+    /* overflow: hidden; */
+}
+.sechH3{
+    line-height: 20px;
+    height: 20px;
+    float:left;
+    font-size:12px;
+    margin-top:0px;
+}
+.u1{
+    float:left;
+    width:400px;
+    list-style: none;
+    padding: 0 1px;
+    height: 20px;
+    line-height: 20px;
+    margin-top:0px;
+    background: #fff;
+    color: #666;
+}
+.u1 li{
+    float:left;
+}
+.u1 li a{
+    font-size: 10px;
+    text-decoration: none;
+    color:#ccc;
+    padding:0 10px;
+}
+/*
+头部右侧部分
+*/
+.menu{
+    font-size: 0;
+    *word-spacing: -1px;
+    float: right;
+    margin: 10px 0 0 0;
+}
+.mall{
+    width: 108px;
+    font-size: 12px;
+    vertical-align: top;
+    letter-spacing: normal;
+    word-spacing: normal;
+    display: inline-block;
+    *display: inline;
+    margin-left: 10px;
+    position: relative;
+    z-index: 3;
+}
+.d{
+    width:90px;
+    line-height: 20px;
+    color: #555;
+    background-color: #FAFAFA;
+    height: 20px;
+    padding: 10px;
+    border: solid 1px #F0F0F0;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+/* .ico1{
+    background-position: -100px 0;
+    margin-right: 4px;
+    width:20px;
+    height:16px;
+} */
+.ico1{
+    background: url(../../assets/top_bg.png) no-repeat -99px 0px;
+    vertical-align: middle;
+    display: inline-block;
+    width: 20px;
+    height: 16px;
+}
+.arrow1{
+    font-size: 0;
+    line-height: 0;
+    vertical-align: middle;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 8px;
+    border-width: 4px;
+    border-color: #777 transparent transparent transparent;
+    border-style: solid dashed dashed dashed;
+    -webkit-transition: .2s ease-in;
+    -moz-transition: -webkit-transform .2s ease-in;
+    -o-transition: -webkit-transform .2s ease-in;
+    transition: .2s ease-in
+}
+.dd1{
+    background-color: #FFF;
+    display: none;
+    border: solid 1px #F0F0F0;
+    position: absolute;
+    z-index: 2;
+    top: 40px;
+    right: 0;
+    width: 348px;
+}
+.subTitle{
+    /* line-height: 28px; */
+    height: 28px;
+    padding: 7px;
+    border-bottom: solid 1px #DDD;
+}
+.subTitle h4{
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 600;
+    float: left;
+}
+.subTitle a{
+    float: right;
+}
+.subTitle a i{
+    background: url(../../assets/top_bg.png) no-repeat -150px 0px;
+    vertical-align: middle;
+    display: inline-block;
+    width: 4px;
+    height: 7px;
+    margin-left: 4px;
+}
+.userMenu{
+    width: 308px;
+    padding: 8px 0;
+    /* overflow: hidden; */
+}
+.u2{
+    width: 310px;
+    padding:0px;
+    margin-left: -2px;
+}
+.u2 li{
+    width: 138px;
+    float: left;
+    padding: 4px 0 4px 16px;
+    border-left: solid 1px #EEE;
+}
+.u2 li a{
+    text-decoration:none;
+    color:#ccc;
+}
+/*
+购物车订单渲染
+*/
+.cart{
+    width: 124px;
+    font-size: 12px;
+    vertical-align: top;
+    letter-spacing: normal;
+    word-spacing: normal;
+    display: inline-block;
+    margin-left: 10px;
+    position: relative;
+    z-index: 3;
+}
+.cartDt{
+    width: 106px;
+    line-height: 20px;
+    color: #555;
+    background-color: #FAFAFA;
+    height: 20px;
+    padding: 10px;
+    border: solid 1px #F0F0F0;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+.cartDt .ico{
+    background: url(../../assets/top_bg.png) no-repeat -125px 0px;
+    vertical-align: middle;
+    display: inline-block;
+    width: 20px;
+    height: 16px;
+}
+.cartDt .arrow{
+    font-size: 0;
+    line-height: 0;
+    vertical-align: middle;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 8px;
+    border-width: 4px;
+    border-color: #777 transparent transparent transparent;
+    border-style: solid dashed dashed dashed;
+    -webkit-transition: .2s ease-in;
+    -moz-transition: -webkit-transform .2s ease-in;
+    -o-transition: -webkit-transform .2s ease-in;
+    transition: .2s ease-in;
+}
+.subTitle h4{
+    font-weight: 600;
+    float: left;
+}
+.goodsBox{
+    display: block;
+    width: 348px;
+    max-height: 267px;
+    overflow: hidden;
+    position: relative;
+}
+.incartGoods{
+    text-align: center;
+    width: 100%;
+}
+.nOrder{
+    margin: 20px 0;
+}
+.nOrder span{
+    text-align: center;
+}
+.checkout{
+    background-color: #F0F0F0;
+    text-align: right;
+    padding: 8px;
+    overflow: hidden;
+}
+.totalPrice{
+    line-height: 20px;
+    display: block;
+}
+.btnCart{
+    float: right;
+    clear: both;
+    line-height: 20px;
+    color: #FFF;
+    background-color: #2f97f0;
+    padding: 4px 8px;
+    margin-top: 4px;
+    border-radius: 4px;
+}
+/*
+导航
+*/
+.nav{
+    width: 100%;
+    height: 36px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 99;
+    zoom: 1;
+    background-color: #2f97f0;
+}
+.wrapper1{
+    font-size: 0;
+    height:36px;
+    white-space: nowrap;
+    /* max-width: 988px; */
+    float: left;
+    overflow: hidden;
+    width: 100%;
+}
+.allCategory{
+    /* background-color: #1280dd; */
+    display: block;
+    width: 110px;
+    height: 36px;
+    float: left;
+    margin-left: 30px;
+}
+.title{
+    line-height: 20px;
+    height: 20px;
+    padding: 8px 10px 10px 10px;
+}
+.title i{
+    font-size: 0;
+    line-height: 0;
+    background: url(../../assets/top_bg.png) no-repeat -182px -186px;
+    width: 18px;
+    height: 14px;
+    float: left;
+    margin: 4px 4px 0 0;
+}
+.title h3{
+    font-size: 1em;
+    font-style: normal;
+    font-weight: normal;
+}
+.title h3 a{
+    font-size: 16px;
+    font-weight: normal;
+    color: #FFF;
+    float: left;
+    margin-left: 4px;
+}
+.siteMenu{
+    font-size: 0;
+    white-space: nowrap;
+    max-width: 988px;
+    float: left;
+    width:941px;
+    height:36px;
+    position: absolute;
+    left: 110px;
+    overflow: hidden;
+}
+.siteMenu li{
+    float:left;
+    
+}
+.siteMenu li a{
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 20px;
+    color: #fff;
+    height: 20px;
+    padding: 8px 18px;
+    display: inline-block;
+    zoom: 1;
+    text-decoration: none;
+}
+.current{
+    font-weight: 600;
+    color: #fff;
+}
+.menud{
+    float: right;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 20px;
+    height: 20px;
+    padding: 8px 18px;
+    /* display: inline-block; */
+    zoom: 1;
+    position: relative;
+    right:0px;
+    margin-right: 30px;
+}
+.huiIco{
+    top: -5px;
+    left: 90px;
+    background: url(../../assets/hui.png) no-repeat 0px 0px;
+    height: 18px;
+    display: inline-block;
+    width: 27px;
+    height: 14px;
+    position: absolute;
+}
+/*
+轮播图
+*/
+/* :global(.ant-carousel){
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    list-style: none;
+    -webkit-font-feature-settings: 'tnum';
+    font-feature-settings: 'tnum';
+    height:32px;
+}
+.slickInitialized{
+    position: relative;
+    display: block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+.slickSlide{
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+.slickList{
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.slickTrack{
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+}
+.slickDots{
+    position:absolute;
+    bottom: 12px;
+    display: block;
+    width: 100%;
+    height: 3px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    list-style: none;
+}
+.slickDots li{
+    position: relative;
+    display: inline-block;
+    margin: 0 2px;
+    padding: 0;
+    text-align: center;
+    vertical-align: top;
+}
+.slickDots li button{
+    display: block;
+    width: 16px;
+    height: 3px;
+    padding: 0;
+    color: transparent;
+    font-size: 0;
+    background: #fff;
+    border: 0;
+    border-radius: 1px;
+    outline: none;
+    cursor: pointer;
+    opacity: 0.3;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.slickActive{
+    width: 24px;
+    background: #fff;
+    opacity: 1;
+} */
+/* .fr {
+    float: right !important;
+    display: inline;
+} */

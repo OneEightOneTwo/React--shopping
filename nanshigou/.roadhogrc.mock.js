@@ -1,3 +1,4 @@
 
 export default {
+    // "disableCSSModules":true,
 };

@@ -1,15 +1,24 @@
-
-html, body,:global(#root) {
+html,
+body,
+:global(#root) {
   height: 100%;
- 
+  margin: 0;
+  padding: 0;
+
 }
-ul,li:global(#root){
+
+ul,
+li:global(#root) {
   list-style: none;
 }
-html, body,div{
-   padding: 0;
-  margin:0
+
+html,
+body,
+div {
+  padding: 0;
+  margin: 0
 }
-a{
-  text-decoration:none; 
+
+a {
+  text-decoration: none;
 }
