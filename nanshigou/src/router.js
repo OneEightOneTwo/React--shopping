@@ -4,10 +4,12 @@ import { Router, Route, Switch,Redirect,} from 'dva/router';
 
 import Goodslist from './routes/Goodlist/Goodslist';
 import Details from './routes/Details/Details';
-import Header from './components/Header/Header'
+
 
 // import IndexPage from './routes/IndexPage';
 import HomePage from './routes/HomePage/HomePage'
+import ShoppingCar from './components/ShoppingCar/ShoppingCar'
+import Header from './components/Header/Header'
 function RouterConfig({ history }) {
   return (
     <Router history={history}>
@@ -20,6 +22,8 @@ function RouterConfig({ history }) {
         {/* <Route path="/" exact component={IndexPage} /> */}
         <Route path="/home" exact component={HomePage} />
         <Redirect from="/" to="/good" />
+        <Route path="/shop" exact component={ShoppingCar} />
+
       </Switch>
     </Router>
   );

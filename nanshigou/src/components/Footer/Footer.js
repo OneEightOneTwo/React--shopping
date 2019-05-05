@@ -9,21 +9,21 @@ class Footer extends React.Component {
   render() {
     return (
       <div>
-        <div class="nsgfoot-xt" />
-        <div class="nsgfoot-bz">
-          <div class="w-1200">
+        <div className="nsgfoot-xt" />
+        <div className="nsgfoot-bz">
+          <div className="w-1200">
             <img src={require("../../assets/footer1.png")} alt="" />
           </div>
         </div>
-        <div class="nsgfoot-bottom">
-          <div class="bottom-box cfix">
-            <div class="bottom-box-left">
-              <div class="bottom-app-code" />
+        <div className="nsgfoot-bottom">
+          <div className="bottom-box cfix">
+            <div className="bottom-box-left">
+              <div className="bottom-app-code" />
               <p>男士购客服</p>
               <p>添加微信号</p>
             </div>
-            <div class="bottom-box-center">
-              <ul class="box-center">
+            <div className="bottom-box-center">
+              <ul className="box-center">
                 <li>
                   <h3>新手指南</h3>
                   <a
@@ -110,42 +110,42 @@ class Footer extends React.Component {
                 </li>
               </ul>
             </div>
-            <div class="bottom-box-right cfix">
-              <div class="contact-us">
+            <div className="bottom-box-right cfix">
+              <div className="contact-us">
                 <h3>联系我们</h3>
                 <p>客服微信：gebuzaishuai</p>
                 <p>工作日：9:00-20:00</p>
-                <div class="gb-okhqb-yj contact-advice">
+                <div className="gb-okhqb-yj contact-advice">
                   <span
-                    class="okhqb_feed"
+                    className="okhqb_feed"
                     // onclick="javascript:window.location.href='https://www.nanshig.com/shop/index.php?act=member_mallconsult&amp;op=add_mallconsult'"
                   >
                     意见反馈
                   </span>
                 </div>
               </div>
-              <div class="attention-us cfix">
+              <div className="attention-us cfix">
                 <h3>关注我们</h3>
                 <div
-                  class="weiXin"
+                  className="weiXin"
                   onclick="window.open('https://www.nanshig.com/weixin/');"
                   title="男士购微信"
                 >
-                  <div class="weiXinCode" />
+                  <div className="weiXinCode" />
                 </div>
                 <div
-                  class="weiBo"
+                  className="weiBo"
                   onclick="window.open('https://weibo.com/p/1006065678617328');"
                   title="男士购微博"
                 >
-                  <div class="weiBoCode" />
+                  <div className="weiBoCode" />
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="nsgfoot-rz">
-          <p class="nsgfoot-link">
+        <div className="nsgfoot-rz">
+          <p className="nsgfoot-link">
             <a>友情链接：</a>
 
             <a href="https://www.nanshig.com/" 
@@ -203,7 +203,7 @@ class Footer extends React.Component {
               潮男服装搭配
             </a>
           </p>
-          <p class="nsgfoot-copy">
+          <p className="nsgfoot-copy">
             Copyright © 2010-2018 男士购 版权所有{" "}
             <a
               // target="_blank"
