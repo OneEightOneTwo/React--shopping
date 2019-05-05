@@ -4,7 +4,7 @@
 :global(.breadcrumb) {
     font-size: 0;
     text-align: left;
-    height: 20px;
+    height: 40px;
     padding: 10px 0;
     /* margin: 0 auto; */
 }
@@ -81,7 +81,7 @@
 :global(.v_module_recommend li .goods-info){
     width: 130px;
     position: absolute;
-    top:-5px;
+    top:10px;
     left: 110px;
 
 }
@@ -132,24 +132,16 @@
 
 :global(.v_module_recommend li ){
     float: left;
-    width: 230px;
+    width: 250px;
     padding: 7px;
     position: relative;
 }
 
 :global(.v_module_recommend li .goods-info .buy-btn a) {
-    line-height: 20px;
     color: #FFF;
-    background-color: #ff3c00;
-    height: 20px;
-    display: inline-block;
-    padding: 3px 12px;
+    padding: 0px 12px;
     border-radius: 2px;
-
-}
-:global(.v_module_recommend li .goods-info .buy-btn ) {
-    margin-left:0px;
-    
+    font-size: 12px;
 }
 :global(.shop_con_list ){
     width: 100%;
@@ -159,6 +151,7 @@
     display: block;
     height: 36px;
     border: solid 1px #D7D7D7;
+    line-height: 36px;
 }
 :global(.sort-bar .pagination){
     display: inline-block;
@@ -173,41 +166,40 @@
     color: #777;
     vertical-align: top;
     display: inline-block;
+    height:36px;
+    padding: 0 0 0 10px;    
 
-    padding: 0 0 0 10px;
+}
+:global(.nch-sortbar-array p ){
+    float: left;   
 
 }
 :global(.nch-sortbar-array ul) {
-    font-size: 0;
     vertical-align: middle;
     display: inline-block;
     border-right: solid 1px #E6E6E6;
+    padding:0px;
 
 }
 :global(.nch-sortbar-array li ){
     font: 12px/20px "microsoft yahei";
-    vertical-align: top;
-    letter-spacing: normal;
-    word-spacing: normal;
     border-left: solid 1px #E6E6E6;
     float: left;
 }
 :global(.nch-sortbar-array li a) {
-    line-height: 20px;
     color: #555;
     display: block;
-    height: 20px;
     padding: 8px 13px 8px 12px;
+       
 }
 :global(.nch-sortbar-array li div ){
-    line-height: 34px;
+     margin-top: 5px;
     padding-left: 12px;
     padding-right: 13px;
 }
 
 :global(.nch-sortbar-array li div .input-txt ){
     width: 38px;
-    padding: 1px;
     border: 1px solid #D7D7D7;
     text-align: center;
 }
@@ -220,21 +212,14 @@
 :global(.nch-sortbar-owner) {
     font: 12px/36px "microsoft yahei";
     color: #777;
-    vertical-align: top;
     display: inline-block;
     padding: 0 0 0 5px;
+    height:35px;
 
 }
-:global(.nch-sortbar-owner span ){
-    vertical-align: middle;
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
-}
+
 :global(.nch-sortbar-owner span a ){
-    font: 12px/20px "microsoft yahei";
     color: #777;
-    display: block;
     height: 20px;
     padding: 8px 8px 8px 4px;
 }
@@ -255,6 +240,7 @@
     vertical-align: top;
     display: inline-block;
     padding: 0 0 0 70px;
+    height:35px;
 }
 :global(.sort-bar .select-layer ){
     background-color: #FFF;
@@ -393,25 +379,54 @@
     font-size: 0;
     display: block;
     width: 1200px;
-    margin-left: -16px;
-    padding-left:20px;
+    display: flex;
+    /* margin-left: -16px; */
+    /* padding-left:20px; */
+    padding:0;
+    flex-wrap: wrap
 }
 :global(.squares .list_pic li ){
     font-size: 12px;
-    vertical-align: middle;
-    letter-spacing: normal;
-    word-spacing: normal;
     display: inline-block;
-    width: 288px;
-    height: 375px;
-    margin: 12px 0 0 5px;
+    width: 292px;
+    height: 347px;
+    margin: 12px 0 0 2px;
     overflow: hidden;
     border: solid 1px #F0F0F0;
+
+    
+
 }
+:global(.squares .list_pic .libox) {
+    width: 292px;
+    height: 456px;     
+    position: relative;
+    /* border: solid 1px #F0F0F0; */
+}
+:global(.squares .list_pic .butbox) {
+    width: 289px;
+    position: absolute;
+    left: 0;
+    top:225px;
+    z-index: 99999;
+}
+:global(.squares .list_pic .active) {
+    transition: all 0.5s;
+    top:175px;  
+}
+:global(.squares .list_pic .activea ) {
+    overflow: visible;
+    /* border:solid 1px rgb(250, 249, 249); */
+    border:0px
+}
+:global(.squares .list_pic .activeb ) {
+    border: solid 1px #F0F0F0;
+}
+
 :global(.squares .goods-content) {
     line-height: 18px;
     background-color: #FFF;
-    width: 300px;
+    width: 280px;
     margin: 3px;
     /* border: solid 1px #F0F0F0; */
     border-radius: 2px;
@@ -450,7 +465,7 @@
 
 
 :global(.squares .goods-info) {
-    width: 300px;
+    width: 285px;
     margin: 0;
 
     z-index: 1;
@@ -465,9 +480,10 @@
 }
 :global(.squares .goods-pic-scroll-show ul ){
     font-size: 0;
-    width: 180px;
+    width: 275px;
     height: 30px;
     padding-left: 10px;
+    background: rgba(253, 253, 253,0.1)
 }
 :global(.squares .goods-pic-scroll-show ul li) {
     vertical-align: middle;
@@ -502,9 +518,9 @@
     line-height: 16px;
     color: #999;
     background-color: #FFF;
-    height: 32px;
+    height: 37px;
     display: block;
-    padding: 0 10px;
+    padding: 5px 10px 0px 8px;
     overflow: hidden;
 }
 :global(.squares .goods-name em) {
@@ -517,7 +533,7 @@
     white-space: nowrap;
     display: block;
     height: 20px;
-    padding: 5px 10px;
+    padding: 0px 10px 0px 10px;
     overflow: hidden;
 }
 :global(.squares .goods-price .sale-price) {
@@ -555,7 +571,7 @@
 :global(.squares .goods-sub) {
     font-size: 0;
     height: 24px;
-    padding: 5px 10px 10px;
+    padding: 5px 10px 24px 10px;
 }
 :global(.squares .goods-sub .goods-compare) {
     line-height: 20px;
@@ -605,8 +621,8 @@
     word-spacing: normal;
     text-align: center;
     display: inline-block;
-    width: 59px;
-    height: 40px;
+    width: 70px;
+    height: 48px;
     padding: 5px;
     margin:0;
     /* border-left: solid 1px #EEE; */
@@ -626,13 +642,13 @@
     color: #B57C5B;
 }
 :global(.squares .store ){
+    width:292px;
     line-height: 20px;
     background-color: #F5F5F5;
     text-align: center;
     display: block;
-    height: 20px;
     clear: both;
-    padding: 8px 0;
+    padding: 8px 0px 8px 5px;
     border-top: solid 1px #EEE;
 }
 
@@ -640,6 +656,7 @@
     display: block;
 }
 :global(.squares .add-cart a ){
+    width:292px;
     font-weight: 600;
     font-size: 14px;
     line-height: 20px;
@@ -648,7 +665,6 @@
     background-color: #2f97f0;
     text-align: center;
     display: block;
-    height: 20px;
     padding: 8px 0;
 }
 :global(.squares .add-cart a i) {

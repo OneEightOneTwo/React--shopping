@@ -83,16 +83,14 @@ position:relative;
     margin-left: 15px;
 }
 .tab,.l{
+    height:33px;
     list-style: none;
     padding: 0 1px;
-    /* height: 36px; */
-    line-height: 36px;
-    font-size: 14px;
-    background: #fff;
-    color: #666;
+    line-height: 33px;
+ 
 }
 .arrow{
-    top: 17px;
+    top: 15px;
     transition: all 0.2s ease-in 0s;
     
     height: 0;
@@ -109,9 +107,9 @@ position:relative;
 }
 .sform{
     border: 2px solid #2F97F0;
-    height: 36px;
-    padding: 2px;
+    height: 40px;
     border-radius: 30px;
+    position: relative;
 }
 .inputText{
     font-size:12px;
@@ -123,13 +121,13 @@ position:relative;
     width: 69%;
     height: 24px;
     float: left;
-    padding: 6px 1%;
-    border: none 0;
+    padding: 17px 1%;
+    border: none;
 }
 .inputSubmit{
     float: left;
     width: 62px;
-    height: 36px;
+    height: 35.5px;
     background: #2F97F0;
     border: none;
     line-height: 1;
@@ -137,7 +135,10 @@ position:relative;
     font-family: "Microsoft YaHei";
     font-size: 16px;
     cursor: pointer;
-    border-radius: 30px;
+    border-radius: 31px;
+    position: absolute;
+    right:-1px;
+
 }
 .keyword{
     line-height: 20px;
@@ -196,18 +197,18 @@ position:relative;
     z-index: 3;
 }
 .d{
-    width:90px;
-    line-height: 20px;
+    width:97px;
+    height:34px;
+    line-height: 34px;
     color: #555;
     background-color: #FAFAFA;
-    height: 20px;
-    padding: 10px;
     border: solid 1px #F0F0F0;
     position: absolute;
     z-index: 2;
     top: 0;
     right: 0;
     cursor: pointer;
+    padding:0px 5px 0px 5px;
 }
 /* .ico1{
     background-position: -100px 0;
@@ -306,18 +307,18 @@ position:relative;
     z-index: 3;
 }
 .cartDt{
-    width: 106px;
-    line-height: 20px;
+    width: 116px;
+    line-height: 34px;
     color: #555;
     background-color: #FAFAFA;
-    height: 20px;
-    padding: 10px;
+    height: 34px;
     border: solid 1px #F0F0F0;
     position: absolute;
     z-index: 2;
     top: 0;
     right: 0;
     cursor: pointer;
+    padding-left: 5px;
 }
 .cartDt .ico{
     background: url(../../assets/top_bg.png) no-repeat -125px 0px;

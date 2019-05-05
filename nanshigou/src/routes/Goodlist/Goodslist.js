@@ -1,7 +1,11 @@
 import React from 'react'
-import Goodlist from '../../components/Goodlist/Goodlist'
-import goodstyle from './Goodlist.css'
 
+import goodstyle from './Goodlist.css'
+import Goodlist from '../../components/Goodlist/Goodlist'
+import Header from '../../components/Header/Header'
+import Footer from '../../components/Footer/Footer'
+
+// import {withRouter} from 'react-router-dom';
 class Goodslist extends React.Component {
     constructor(props) {
         super()
@@ -12,13 +16,15 @@ class Goodslist extends React.Component {
 
     render() {
         return (
-            <div className={goodstyle.goods}>
+            <div className={goodstyle.goods}>              
+                <Header></Header>
                 <Goodlist></Goodlist>
-
+                <Footer></Footer>
             </div>
            
         )
     }
 }
+
 
 export default Goodslist

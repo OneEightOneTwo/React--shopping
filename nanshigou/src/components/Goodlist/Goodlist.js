@@ -1,21 +1,79 @@
 import React from 'react'
+// import { routerRedux } from 'dva/router';
+// import {withRouter} from 'react-router-dom';
 import './Goodlist.css'
-
+import axios from 'axios';
+import { withRouter } from 'dva/router'
 class Goodlist extends React.Component {
     constructor(props) {
         super()
         this.state = {
-
+            datalist: [],
+            top: '225px',
+            active: '',
+            activea:'',
+            activeb:'',
         }
+        
+    }
+
+    async componentWillMount() {       
+        let {data} = await axios.get('https://www.nanshig.com/mobile/index.php', {
+             params: {
+                act: 'goods',
+                op: 'goods_list',
+                title:'潮男必备鞋款',
+                keyword: '',
+                page: 36,
+                curpage: 1
+                //  goods_id: '227236',
+            }
+        })
+        
+        this.setState({
+            datalist: data.datas.goods_list
+        });
+       
+
+    }
+    
+    
+    clickrouter(idx) {
+        // console.log(this.props)
+        let {history} = this.props
+        history.push({
+            pathname: '/deta',
+            search: '?goods_id=' + idx,
+        })
+    
+    }
+    msover(index) {      
+        this.setState({
+            active: index,
+            activea: index,
+            activeb: index,
+        });       
+    }
+
+    msout() {  
+         this.setState({
+             active: '',
+             activea: '',
+             activeb:'',
+        })
+    }
+    change(idx){
+        console.log(idx)
     }
 
     render() {
+        const { active,activea,activeb } = this.state;
         return (
             <div>
                 <div className='layout'>
                     <div className='breadcrumb'><i ></i>
                         <span>
-                            <a href="javacript:void(0)">首页</a>
+                            <a href="javacript:void(0)" >首页</a>
                         </span>
                         <span className='arrow'>&gt;</span>
                         <span>
@@ -96,7 +154,8 @@ class Goodlist extends React.Component {
                 <div className="shop_con_list">
                     <nav className="sort-bar" >
                         {/* <div className="pagination"><ul><li><span>上一页</span></li><li><a className="demo" href="https://www.nanshig.com/shop/cate-1072-0-0-0-0-0-0-0-2.html"><span>下一页</span></a></li></ul> </div> */}
-                        <div className="nch-sortbar-array"> 排序方式：
+                        <div className="nch-sortbar-array">
+                                <p>排序方式：</p>
                             <ul>
                                 <li className="selected"><a href="##" title="默认排序">默认</a></li>
                                 <li><a href="javacript:void(0)" title="点击按销量从高到低排序">销量<i></i></a></li>
@@ -104,8 +163,8 @@ class Goodlist extends React.Component {
                                 <li><a href="javacript:void(0)" title="点击按价格从高到低排序">价格<i></i></a></li>
                                 <li>
                                     <div>
-                                        <input id="priceMin" title="最低价"  maxlength="6"  className="input-txt"></input>
-                                        <input id="priceMax" title="最高价"  maxlength="6"  className="input-txt"></input>
+                                        <input id="priceMin" title="最低价" maxlength="6" className="input-txt"></input>-
+                                        <input id="priceMax" title="最高价" maxlength="6" className="input-txt"></input>
                                         <a id="priceBtn" className="priceBtn" href="javacript:void(0)">确定</a>
                                     </div>
                                 </li>
@@ -214,311 +273,70 @@ class Goodlist extends React.Component {
                         </div>
                     </nav>
                     <div className="squares">
-                        <ul className="list_pic">
-                            <li className="item">
-                                <div className="goods-content" nctype_goods=" 227209" nctype_store="47">
-                                    <div className="goods-pic">
-                                        <a href="https://www.nanshig.com/shop/item-227209.html" title="2019春季新款小白鞋男韩版板鞋男士白鞋百搭休闲鞋夏季增高男鞋子 白色 36">
-                                            <img src="https://www.nanshig.com/data/upload/shop/store/goods/47/47_06071111289163602_240.jpg" alt="2019春季新款小白鞋男韩版板鞋男士白鞋百搭休闲鞋夏季增高男鞋子 白色 36" style={{ display: 'inline' }} />
-                                        </a>
+                        <ul className="list_pic">                                                    
+                            {
+                                this.state.datalist.map((item, index, e) => {
+                                    const liClass = active === index ? 'active' : ''
+                                    const liClassa = activea === index ? 'activea' : ''
+                                    const liClassb = activeb === index ? 'activeb' : ''
+                                    return (
+                                        <li className={`item ${liClassa}`}  key={index} onClick={this.clickrouter.bind(this,item.goods_id,)} data-id={index}>
+                                            <div className={`libox ${liClassb}`} ref="libox" onMouseOver={this.msover.bind(this,index)} onMouseOut={this.msout.bind(this)} >
+                                                <div className="goods-content" nctype_goods=" 227209" nctype_store="47">
+                                                    <div className="goods-pic">
+                                                        <a href="javacript:void(0)" title={item.goods_name}>
+                                                            <img src={item.goods_image_url} alt={item.goods_name} style={{ display: 'inline' }} />
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div className={`butbox ${liClass}`} style={{transition:'all 0.5s'}}  >
+                                                    <div className="goods-info" >
+                                                        <div className="goods-pic-scroll-show">
+                                                            <ul>
+                                                                <li className="selected">
+                                                                    <a href="##" >
+                                                                        <img src={item.goods_image_url} style={{ display: 'inline' }} alt='' />
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div className="goods-name"><a href="https://www.nanshig.com/shop/item-227209.html" title="">{item.goods_name}<em></em></a></div>
+                                                        <div className="goods-price">
+                                                            <em className="sale-price" title={item.goods_price}>{item.goods_price}</em>
+                                                            <em className="market-price" title={item.goods_marketprice}>{item.goods_marketprice}</em>
+                                                            <span className="raty" data-score="5" title="很满意" style={{ width: '80px' }}>
+                                                                <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="1" title="很满意" />
+                                                                <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="2" title="很满意" />&nbsp;
+                                                                <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="3" title="很满意" />&nbsp;
+                                                                <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="4" title="很满意" />&nbsp;
+                                                                <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="5" title="很满意" />
+                                                                <input type="hidden" name="score" readonly="readonly"></input>
+                                                            </span>
+                                                        </div>
+                                                        <div className="goods-sub">
+                                                            <span className="goods-compare" nc_type="compare_227209" data-param="{&quot;gid&quot;:&quot;227209&quot;}"><i></i>加入对比</span> </div>
+                                                    </div>
+                                                    <div className="sell-stat">
+                                                        <ul>
+                                                            <li><a href="https://www.nanshig.com/shop/item-227209.html#ncGoodsRate" className="status">{item.goods_salenum}</a>
+                                                                <p>商品销量</p>
+                                                            </li>name
+                                                            <li><a href="https://www.nanshig.com/shop/comments-227209-0-0.html" >0</a>
+                                                                <p>用户评论</p>
+                                                            </li>
 
-                                    </div>
-                                </div>
-                                <div className="goods-info" style={{ top: '230px ' }}>
-                                    <div className="goods-pic-scroll-show">
-                                        <ul>
-                                            <li className="selected">
-                                                <a href="##" >
-                                                    <img src="https://www.nanshig.com/data/upload/shop/store/goods/47/47_06071111289163602_60.jpg" style={{ display: 'inline' }} alt='' />
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="goods-name"><a href="https://www.nanshig.com/shop/item-227209.html" title="">2019春季新款小白鞋男韩版板鞋男士白鞋百搭休闲鞋夏季增高男鞋子 白色 36<em></em></a></div>
-                                    <div className="goods-price">
-                                        <em className="sale-price" title="商城价：¥89.00">¥89.00</em>
-                                        <em className="market-price" title="市场价：¥135.00">¥135.00</em>
-                                        <span className="raty" data-score="5" title="很满意" style={{ width: '80px' }}>
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="1" title="很满意" />
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="2" title="很满意" />&nbsp;
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="3" title="很满意" />&nbsp;
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="4" title="很满意" />&nbsp;
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="5" title="很满意" />
-                                            <input type="hidden" name="score"  readonly="readonly"></input>
-                                        </span>
-                                    </div>
-                                    <div className="goods-sub">
-                                        <span className="goods-compare" nc_type="compare_227209" data-param="{&quot;gid&quot;:&quot;227209&quot;}"><i></i>加入对比</span> </div>
-                                </div>
-                                <div className="sell-stat">
-                                    <ul>
-                                        <li><a href="https://www.nanshig.com/shop/item-227209.html#ncGoodsRate" className="status">0</a>
-                                            <p>商品销量</p>
+                                                        </ul>
+                                                    </div>
+                                                    <div className="store"><a href="https://www.nanshig.com/shop/shop-47.html" title="潮男公社" className="">{item.store_name}</a></div>
+                                                    <div className="add-cart" onClick={this.change.bind(this,item.goods_id)}>
+                                                        <a href="##"    ><i className="icon-shopping-cart"></i>加入购物车</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </li>
-                                        <li><a href="https://www.nanshig.com/shop/comments-227209-0-0.html" >0</a>
-                                            <p>用户评论</p>
-                                        </li>
-                                        <li><em member_id="23245">&nbsp;</em></li>
-                                    </ul>
-                                </div>
-                                <div className="store"><a href="https://www.nanshig.com/shop/shop-47.html" title="潮男公社" className="name">潮男公社</a></div>
-                                <div className="add-cart">
-                                    <a href="##"    ><i className="icon-shopping-cart"></i>加入购物车</a>
-                                </div>
-                            </li>
-                            <li className="item">
-                                <div className="goods-content" nctype_goods=" 227209" nctype_store="47">
-                                    <div className="goods-pic">
-                                        <a href="https://www.nanshig.com/shop/item-227209.html" title="2019春季新款小白鞋男韩版板鞋男士白鞋百搭休闲鞋夏季增高男鞋子 白色 36">
-                                            <img src="https://www.nanshig.com/data/upload/shop/store/goods/47/47_06071111289163602_240.jpg" alt="2019春季新款小白鞋男韩版板鞋男士白鞋百搭休闲鞋夏季增高男鞋子 白色 36" style={{ display: 'inline' }} />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div className="goods-info" style={{ top: '230px ' }}>
-                                    <div className="goods-pic-scroll-show">
-                                        <ul>
-                                            <li className="selected">
-                                                <a href="##" >
-                                                    <img src="https://www.nanshig.com/data/upload/shop/store/goods/47/47_06071111289163602_60.jpg" style={{ display: 'inline' }} alt='' />
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="goods-name"><a href="https://www.nanshig.com/shop/item-227209.html" title="">2019春季新款小白鞋男韩版板鞋男士白鞋百搭休闲鞋夏季增高男鞋子 白色 36<em></em></a></div>
-                                    <div className="goods-price">
-                                        <em className="sale-price" title="商城价：¥89.00">¥89.00</em>
-                                        <em className="market-price" title="市场价：¥135.00">¥135.00</em>
-                                        <span className="raty" data-score="5" title="很满意" style={{ width: '80px' }}>
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="1" title="很满意" />
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="2" title="很满意" />&nbsp;
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="3" title="很满意" />&nbsp;
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="4" title="很满意" />&nbsp;
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="5" title="很满意" />
-                                            <input type="hidden" name="score"  readonly="readonly"></input>
-                                        </span>
-                                    </div>
-                                    <div className="goods-sub">
-                                        <span className="goods-compare" nc_type="compare_227209" data-param="{&quot;gid&quot;:&quot;227209&quot;}"><i></i>加入对比</span> </div>
-                                </div>
-                                <div className="sell-stat">
-                                    <ul>
-                                        <li><a href="https://www.nanshig.com/shop/item-227209.html#ncGoodsRate" className="status">0</a>
-                                            <p>商品销量</p>
-                                        </li>
-                                        <li><a href="https://www.nanshig.com/shop/comments-227209-0-0.html" >0</a>
-                                            <p>用户评论</p>
-                                        </li>
-                                        <li><em member_id="23245">&nbsp;</em></li>
-                                    </ul>
-                                </div>
-                                <div className="store"><a href="https://www.nanshig.com/shop/shop-47.html" title="潮男公社" className="name">潮男公社</a></div>
-                                <div className="add-cart">
-                                    <a href="##"    ><i className="icon-shopping-cart"></i>加入购物车</a>
-                                </div>
-                            </li>
-                            <li className="item">
-                                <div className="goods-content" nctype_goods=" 227209" nctype_store="47">
-                                    <div className="goods-pic">
-                                        <a href="https://www.nanshig.com/shop/item-227209.html" title="2019春季新款小白鞋男韩版板鞋男士白鞋百搭休闲鞋夏季增高男鞋子 白色 36">
-                                            <img src="https://www.nanshig.com/data/upload/shop/store/goods/47/47_06071111289163602_240.jpg" alt="2019春季新款小白鞋男韩版板鞋男士白鞋百搭休闲鞋夏季增高男鞋子 白色 36" style={{ display: 'inline' }} />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div className="goods-info" style={{ top: '230px ' }}>
-                                    <div className="goods-pic-scroll-show">
-                                        <ul>
-                                            <li className="selected">
-                                                <a href="##" >
-                                                    <img src="https://www.nanshig.com/data/upload/shop/store/goods/47/47_06071111289163602_60.jpg" style={{ display: 'inline' }} alt='' />
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="goods-name"><a href="https://www.nanshig.com/shop/item-227209.html" title="">2019春季新款小白鞋男韩版板鞋男士白鞋百搭休闲鞋夏季增高男鞋子 白色 36<em></em></a></div>
-                                    <div className="goods-price">
-                                        <em className="sale-price" title="商城价：¥89.00">¥89.00</em>
-                                        <em className="market-price" title="市场价：¥135.00">¥135.00</em>
-                                        <span className="raty" data-score="5" title="很满意" style={{ width: '80px' }}>
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="1" title="很满意" />
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="2" title="很满意" />&nbsp;
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="3" title="很满意" />&nbsp;
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="4" title="很满意" />&nbsp;
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="5" title="很满意" />
-                                            <input type="hidden" name="score"  readonly="readonly"></input>
-                                        </span>
-                                    </div>
-                                    <div className="goods-sub">
-                                        <span className="goods-compare" nc_type="compare_227209" data-param="{&quot;gid&quot;:&quot;227209&quot;}"><i></i>加入对比</span> </div>
-                                </div>
-                                <div class="sell-stat">
-                                    <ul>
-                                        <li><a href="https://www.nanshig.com/shop/item-227209.html#ncGoodsRate" className="status">0</a>
-                                            <p>商品销量</p>
-                                        </li>
-                                        <li><a href="https://www.nanshig.com/shop/comments-227209-0-0.html" >0</a>
-                                            <p>用户评论</p>
-                                        </li>
-                                        <li><em member_id="23245">&nbsp;</em></li>
-                                    </ul>
-                                </div>
-                                <div className="store"><a href="https://www.nanshig.com/shop/shop-47.html" title="潮男公社" className="name">潮男公社</a></div>
-                                <div class="add-cart">
-                                    <a href="##"    ><i className="icon-shopping-cart"></i>加入购物车</a>
-                                </div>
-                            </li>
-                            <li className="item">
-                                <div className="goods-content" nctype_goods=" 227209" nctype_store="47">
-                                    <div className="goods-pic">
-                                        <a href="https://www.nanshig.com/shop/item-227209.html" title="2019春季新款小白鞋男韩版板鞋男士白鞋百搭休闲鞋夏季增高男鞋子 白色 36">
-                                            <img src="https://www.nanshig.com/data/upload/shop/store/goods/47/47_06071111289163602_240.jpg" alt="2019春季新款小白鞋男韩版板鞋男士白鞋百搭休闲鞋夏季增高男鞋子 白色 36" style={{ display: 'inline' }} />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div className="goods-info" style={{ top: '230px ' }}>
-                                    <div className="goods-pic-scroll-show">
-                                        <ul>
-                                            <li className="selected">
-                                                <a href="##" >
-                                                    <img src="https://www.nanshig.com/data/upload/shop/store/goods/47/47_06071111289163602_60.jpg" style={{ display: 'inline' }} alt='' />
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="goods-name"><a href="https://www.nanshig.com/shop/item-227209.html" title="">2019春季新款小白鞋男韩版板鞋男士白鞋百搭休闲鞋夏季增高男鞋子 白色 36<em></em></a></div>
-                                    <div className="goods-price">
-                                        <em className="sale-price" title="商城价：¥89.00">¥89.00</em>
-                                        <em className="market-price" title="市场价：¥135.00">¥135.00</em>
-                                        <span className="raty" data-score="5" title="很满意" style={{ width: '80px' }}>
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="1" title="很满意" />
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="2" title="很满意" />&nbsp;
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="3" title="很满意" />&nbsp;
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="4" title="很满意" />&nbsp;
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="5" title="很满意" />
-                                            <input type="hidden" name="score"  readonly="readonly"></input>
-                                        </span>
-                                    </div>
-                                    <div className="goods-sub">
-                                        <span className="goods-compare" nc_type="compare_227209" data-param="{&quot;gid&quot;:&quot;227209&quot;}"><i></i>加入对比</span> </div>
-                                </div>
-                                <div class="sell-stat">
-                                    <ul>
-                                        <li><a href="https://www.nanshig.com/shop/item-227209.html#ncGoodsRate" className="status">0</a>
-                                            <p>商品销量</p>
-                                        </li>
-                                        <li><a href="https://www.nanshig.com/shop/comments-227209-0-0.html" >0</a>
-                                            <p>用户评论</p>
-                                        </li>
-                                        <li><em member_id="23245">&nbsp;</em></li>
-                                    </ul>
-                                </div>
-                                <div className="store"><a href="https://www.nanshig.com/shop/shop-47.html" title="潮男公社" className="name">潮男公社</a></div>
-                                <div class="add-cart">
-                                    <a href="##"    ><i className="icon-shopping-cart"></i>加入购物车</a>
-                                </div>
-                            </li>
-                             <li className="item">
-                                <div className="goods-content" nctype_goods=" 227209" nctype_store="47">
-                                    <div className="goods-pic">
-                                        <a href="https://www.nanshig.com/shop/item-227209.html" title="2019春季新款小白鞋男韩版板鞋男士白鞋百搭休闲鞋夏季增高男鞋子 白色 36">
-                                            <img src="https://www.nanshig.com/data/upload/shop/store/goods/47/47_06071111289163602_240.jpg" alt="2019春季新款小白鞋男韩版板鞋男士白鞋百搭休闲鞋夏季增高男鞋子 白色 36" style={{ display: 'inline' }} />
-                                        </a>
-
-                                    </div>
-                                </div>
-                                <div className="goods-info" style={{ top: '230px ' }}>
-                                    <div className="goods-pic-scroll-show">
-                                        <ul>
-                                            <li className="selected">
-                                                <a href="##" >
-                                                    <img src="https://www.nanshig.com/data/upload/shop/store/goods/47/47_06071111289163602_60.jpg" style={{ display: 'inline' }} alt='' />
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="goods-name"><a href="https://www.nanshig.com/shop/item-227209.html" title="">2019春季新款小白鞋男韩版板鞋男士白鞋百搭休闲鞋夏季增高男鞋子 白色 36<em></em></a></div>
-                                    <div className="goods-price">
-                                        <em className="sale-price" title="商城价：¥89.00">¥89.00</em>
-                                        <em className="market-price" title="市场价：¥135.00">¥135.00</em>
-                                        <span className="raty" data-score="5" title="很满意" style={{ width: '80px' }}>
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="1" title="很满意" />
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="2" title="很满意" />&nbsp;
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="3" title="很满意" />&nbsp;
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="4" title="很满意" />&nbsp;
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="5" title="很满意" />
-                                            <input type="hidden" name="score"  readonly="readonly"></input>
-                                        </span>
-                                    </div>
-                                    <div className="goods-sub">
-                                        <span className="goods-compare" nc_type="compare_227209" data-param="{&quot;gid&quot;:&quot;227209&quot;}"><i></i>加入对比</span> </div>
-                                </div>
-                                <div class="sell-stat">
-                                    <ul>
-                                        <li><a href="https://www.nanshig.com/shop/item-227209.html#ncGoodsRate" className="status">0</a>
-                                            <p>商品销量</p>
-                                        </li>
-                                        <li><a href="https://www.nanshig.com/shop/comments-227209-0-0.html" >0</a>
-                                            <p>用户评论</p>
-                                        </li>
-                                        <li><em member_id="23245">&nbsp;</em></li>
-                                    </ul>
-                                </div>
-                                <div className="store"><a href="https://www.nanshig.com/shop/shop-47.html" title="潮男公社" className="name">潮男公社</a></div>
-                                <div class="add-cart">
-                                    <a href="##"    ><i className="icon-shopping-cart"></i>加入购物车</a>
-                                </div>
-                            </li>
-                             <li className="item">
-                                <div className="goods-content" nctype_goods=" 227209" nctype_store="47">
-                                    <div className="goods-pic">
-                                        <a href="https://www.nanshig.com/shop/item-227209.html" title="2019春季新款小白鞋男韩版板鞋男士白鞋百搭休闲鞋夏季增高男鞋子 白色 36">
-                                            <img src="https://www.nanshig.com/data/upload/shop/store/goods/47/47_06071111289163602_240.jpg" alt="2019春季新款小白鞋男韩版板鞋男士白鞋百搭休闲鞋夏季增高男鞋子 白色 36" style={{ display: 'inline' }} />
-                                        </a>
-
-                                    </div>
-                                </div>
-                                <div className="goods-info" style={{ top: '230px ' }}>
-                                    <div className="goods-pic-scroll-show">
-                                        <ul>
-                                            <li className="selected">
-                                                <a href="##" >
-                                                    <img src="https://www.nanshig.com/data/upload/shop/store/goods/47/47_06071111289163602_60.jpg" style={{ display: 'inline' }} alt='' />
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="goods-name"><a href="https://www.nanshig.com/shop/item-227209.html" title="">2019春季新款小白鞋男韩版板鞋男士白鞋百搭休闲鞋夏季增高男鞋子 白色 36<em></em></a></div>
-                                    <div className="goods-price">
-                                        <em className="sale-price" title="商城价：¥89.00">¥89.00</em>
-                                        <em className="market-price" title="市场价：¥135.00">¥135.00</em>
-                                        <span className="raty" data-score="5" title="很满意" style={{ width: '80px' }}>
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="1" title="很满意" />
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="2" title="很满意" />&nbsp;
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="3" title="很满意" />&nbsp;
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="4" title="很满意" />&nbsp;
-                                            <img src="https://www.nanshig.com/data/resource/js/jquery.raty/img/star-on.png" alt="5" title="很满意" />
-                                            <input type="hidden" name="score"  readonly="readonly"></input>
-                                        </span>
-                                    </div>
-                                    <div className="goods-sub">
-                                        <span className="goods-compare" nc_type="compare_227209" data-param="{&quot;gid&quot;:&quot;227209&quot;}"><i></i>加入对比</span> </div>
-                                </div>
-                                <div class="sell-stat">
-                                    <ul>
-                                        <li><a href="https://www.nanshig.com/shop/item-227209.html#ncGoodsRate" className="status">0</a>
-                                            <p>商品销量</p>
-                                        </li>
-                                        <li><a href="https://www.nanshig.com/shop/comments-227209-0-0.html" >0</a>
-                                            <p>用户评论</p>
-                                        </li>
-                                        <li><em member_id="23245">&nbsp;</em></li>
-                                    </ul>
-                                </div>
-                                <div className="store"><a href="https://www.nanshig.com/shop/shop-47.html" title="潮男公社" className="name">潮男公社</a></div>
-                                <div class="add-cart">
-                                    <a href="##"    ><i className="icon-shopping-cart"></i>加入购物车</a>
-                                </div>
-                            </li>
-
+                                    )
+                                })
+                            }
 
 
                         </ul>
@@ -536,5 +354,5 @@ class Goodlist extends React.Component {
         )
     }
 }
-
+Goodlist =withRouter(Goodlist)
 export default Goodlist
