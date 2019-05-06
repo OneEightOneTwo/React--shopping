@@ -120,14 +120,14 @@ a:link, a:visited, a:active {
     float: left;
     background: #fff;
     position: relative;
-    border: 2px solid #FaFaFa;
+    /* border: 2px solid #FaFaFa; */
     border-radius: 2px;
     height: 402px;
     margin: 0 8px 2px 0;
 }
 :global(.nsggoods-pic) {
     position: relative;
-    width: 290px;
+    width: 285px;
     height: 290px;
     background: #fafafa;
 }
@@ -140,7 +140,7 @@ a:link, a:visited, a:active {
     visibility: hidden;
 }
 :global(.goods-pic-link img) {
-    width: 290px;
+    width: 285px;
     height: 290px;
 }
 :global(.tag-ap) {
@@ -199,4 +199,17 @@ a:link, a:visited, a:active {
     position: absolute;
     right: 16px;
     bottom: 30px;
+}
+:global(.clearfix:after) {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+:global(.active){
+    top:-10px;
+    border:2px solid #2f97f0;
+    box-shadow:10px 0px 0px 0px #2279ee,
 }

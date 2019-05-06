@@ -8,9 +8,11 @@
   },
   "dependencies": {
     "antd": "^3.16.6",
+    "axios": "^0.18.0",
     "dva": "^2.4.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^5.0.0"
   },
   "devDependencies": {
     "babel-plugin-dva-hmr": "^0.3.2",
@@ -23,5 +25,11 @@
     "husky": "^0.12.0",
     "redbox-react": "^1.4.3",
     "roadhog": "^2.5.0-beta.4"
-  }
+  },
+   "proxy": {
+    "/*": {
+      "target": "https://www.nanshig.com",
+      "changeOrigin": true
+    }
+   }
 }
