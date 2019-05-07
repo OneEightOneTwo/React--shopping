@@ -17,6 +17,8 @@ function LoginPage() {
                                         <a href="###" className="tabulous_active">使用手机号码注册<i></i></a>
                                     </li>
                                 </ul>
+                                <div className="tabs-container">
+                                </div>
                             </div>
                         </div>
                         <div className="right"></div>
