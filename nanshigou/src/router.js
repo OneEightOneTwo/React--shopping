@@ -9,6 +9,7 @@ import Details from './routes/Details/Details';
 // import IndexPage from './routes/IndexPage';
 import HomePage from './routes/HomePage/HomePage'
 import Login from './routes/Login/Login'
+import Reg from './routes/Reg/Reg'
 import ShoppingCar from './components/ShoppingCar/ShoppingCar'
 import Header from './components/Header/Header'
 function RouterConfig({ history }) {
@@ -23,6 +24,7 @@ function RouterConfig({ history }) {
         {/* <Route path="/" exact component={IndexPage} /> */}
         <Route path="/home" exact component={HomePage} />
         <Route path="/login" exact component={Login} />
+        <Route path="/reg" exact component={Reg} />
         <Redirect from="/" to="/good" />
         <Route path="/shop" exact component={ShoppingCar} />
 

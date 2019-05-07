@@ -15,7 +15,7 @@ function IndexPage() {
       <Content></Content>
       <Footer></Footer>
     </div>
-   
+
   );
 }
 
