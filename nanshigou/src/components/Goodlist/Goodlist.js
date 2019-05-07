@@ -6,68 +6,100 @@ import axios from 'axios';
 import { withRouter } from 'dva/router'
 class Goodlist extends React.Component {
     constructor(props) {
-        super()
+        super(props)
         this.state = {
             datalist: [],
             top: '225px',
-            active: '',
-            activea:'',
-            activeb:'',
-        }
-        
-    }
+            sactive: '',
+            sactivea: '',
+            sactiveb: '',
+            curpage: 1,
+            sum: [
+                {
+                    sums: '1',
+                }, {
+                    sums: '2',
+                }, {
+                    sums: '3',
+                }, {
+                    sums: '4',
+                }, {
+                    sums: '5',
+                }, {
+                    sums: '6',
+                },
 
-    async componentWillMount() {       
-        let {data} = await axios.get('https://www.nanshig.com/mobile/index.php', {
-             params: {
+            ]
+        }
+    }
+    //封装axios请求
+    async show() {
+        let { data } = await axios.get('https://www.nanshig.com/mobile/index.php', {
+            params: {
                 act: 'goods',
                 op: 'goods_list',
-                title:'潮男必备鞋款',
-                keyword: '',
+                // keyword: '',
                 page: 36,
-                curpage: 1
+                curpage: this.state.curpage
                 //  goods_id: '227236',
             }
         })
-        
         this.setState({
             datalist: data.datas.goods_list
         });
-       
-
     }
-    
-    
+
+    //进入页面渲染
+    componentWillMount() {
+        this.show()
+    }
+
+    //点击跳转商品详情页
     clickrouter(idx) {
         // console.log(this.props)
-        let {history} = this.props
+        let { history } = this.props
         history.push({
             pathname: '/deta',
             search: '?goods_id=' + idx,
         })
-    
-    }
-    msover(index) {      
-        this.setState({
-            active: index,
-            activea: index,
-            activeb: index,
-        });       
+
     }
 
-    msout() {  
-         this.setState({
-             active: '',
-             activea: '',
-             activeb:'',
+    //鼠标划过商品列表改变样式
+    msover(index) {
+        this.setState({
+            sactive: index,
+            sactivea: index,
+            sactiveb: index,
+        });
+    }
+    //鼠标离开样式复原
+    msout() {
+        this.setState({
+            sactive: '',
+            sactivea: '',
+            sactiveb: '',
         })
     }
-    change(idx){
-        console.log(idx)
+
+
+
+    //分页功能
+    pagenum(e) {
+
+        this.setState({
+            curpage: e.target.innerText,
+        }, () => {
+            this.show()
+        })
+    }
+
+    gotoshop(){
+        alert('添加成功')
     }
 
     render() {
-        const { active,activea,activeb } = this.state;
+        const { sactive, sactivea, sactiveb } = this.state;
         return (
             <div>
                 <div className='layout'>
@@ -155,7 +187,7 @@ class Goodlist extends React.Component {
                     <nav className="sort-bar" >
                         {/* <div className="pagination"><ul><li><span>上一页</span></li><li><a className="demo" href="https://www.nanshig.com/shop/cate-1072-0-0-0-0-0-0-0-2.html"><span>下一页</span></a></li></ul> </div> */}
                         <div className="nch-sortbar-array">
-                                <p>排序方式：</p>
+                            <p>排序方式：</p>
                             <ul>
                                 <li className="selected"><a href="##" title="默认排序">默认</a></li>
                                 <li><a href="javacript:void(0)" title="点击按销量从高到低排序">销量<i></i></a></li>
@@ -273,23 +305,23 @@ class Goodlist extends React.Component {
                         </div>
                     </nav>
                     <div className="squares">
-                        <ul className="list_pic">                                                    
+                        <ul className="list_pic">
                             {
                                 this.state.datalist.map((item, index, e) => {
-                                    const liClass = active === index ? 'active' : ''
-                                    const liClassa = activea === index ? 'activea' : ''
-                                    const liClassb = activeb === index ? 'activeb' : ''
+                                    const liClass = sactive === index ? 'sactive' : ''
+                                    const liClassa = sactivea === index ? 'sactivea' : ''
+                                    const liClassb = sactiveb === index ? 'sactiveb' : ''
                                     return (
-                                        <li className={`item ${liClassa}`}  key={index} onClick={this.clickrouter.bind(this,item.goods_id,)} data-id={index}>
-                                            <div className={`libox ${liClassb}`} ref="libox" onMouseOver={this.msover.bind(this,index)} onMouseOut={this.msout.bind(this)} >
-                                                <div className="goods-content" nctype_goods=" 227209" nctype_store="47">
+                                        <li className={`item ${liClassa}`} key={index}  data-id={index}>
+                                            <div className={`libox ${liClassb}`} ref="libox" onMouseOver={this.msover.bind(this, index)} onMouseOut={this.msout.bind(this)} >
+                                                <div className="goods-content" onClick={this.clickrouter.bind(this, item.goods_id)} nctype_goods=" 227209" nctype_store="47">
                                                     <div className="goods-pic">
                                                         <a href="javacript:void(0)" title={item.goods_name}>
                                                             <img src={item.goods_image_url} alt={item.goods_name} style={{ display: 'inline' }} />
                                                         </a>
                                                     </div>
                                                 </div>
-                                                <div className={`butbox ${liClass}`} style={{transition:'all 0.5s'}}  >
+                                                <div className={`butbox ${liClass}`} style={{ transition: 'all 0.5s' }}  >
                                                     <div className="goods-info" >
                                                         <div className="goods-pic-scroll-show">
                                                             <ul>
@@ -300,7 +332,7 @@ class Goodlist extends React.Component {
                                                                 </li>
                                                             </ul>
                                                         </div>
-                                                        <div className="goods-name"><a href="https://www.nanshig.com/shop/item-227209.html" title="">{item.goods_name}<em></em></a></div>
+                                                        <div className="goods-name" onClick={this.clickrouter.bind(this, item.goods_id)}><a href="javacript:void(0)" title="">{item.goods_name}<em></em></a></div>
                                                         <div className="goods-price">
                                                             <em className="sale-price" title={item.goods_price}>{item.goods_price}</em>
                                                             <em className="market-price" title={item.goods_marketprice}>{item.goods_marketprice}</em>
@@ -328,8 +360,8 @@ class Goodlist extends React.Component {
                                                         </ul>
                                                     </div>
                                                     <div className="store"><a href="https://www.nanshig.com/shop/shop-47.html" title="潮男公社" className="">{item.store_name}</a></div>
-                                                    <div className="add-cart" onClick={this.change.bind(this,item.goods_id)}>
-                                                        <a href="##"    ><i className="icon-shopping-cart"></i>加入购物车</a>
+                                                    <div className="add-cart">
+                                                        <a href="javacript:void(0)" onClick={this.gotoshop.bind(this)}   ><i className="icon-shopping-cart"></i>加入购物车</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -342,8 +374,36 @@ class Goodlist extends React.Component {
                         </ul>
 
 
-                    </div>
 
+
+                    </div>
+                    <div className="tc mt20 mb20">
+                        <div className="pagination">
+                            <ul>
+                                <li><span>首页</span></li>
+                                <li><span>上一页</span></li>
+                            </ul>
+                            <ul>
+                                {/* <li onClick={this.pagenum.bind(this)}><a className="demo" href="javacript:void(0)"><span>1</span></a></li>
+                                <li onClick={this.pagenum.bind(this)}><a className="demo" href="javacript:void(0)"><span>2</span></a></li>
+                                <li onClick={this.pagenum.bind(this)}><a className="demo" href="javacript:void(0)"><span>3</span></a></li>
+                                <li onClick={this.pagenum.bind(this)}><a className="demo" href="javacript:void(0)"><span>4</span></a></li>
+                                <li onClick={this.pagenum.bind(this)}><a className="demo" href="javacript:void(0)"><span>5</span></a></li>
+                                <li onClick={this.pagenum.bind(this)}><a className="demo" href="javacript:void(0)"><span>6</span></a></li> */}
+                                {
+                                    this.state.sum.map((item, index) => {
+                                        return (
+                                            <li key={index} onClick={this.pagenum.bind(this)}><a className="demo" href="javacript:void(0)" ><span ref="spansum" >{item.sums}</span></a></li>
+                                        )
+                                    })
+                                }
+                            </ul>
+                            <ul>
+                                <li><span>...</span></li><li><a class="demo" href="javacript:void(0)">
+                                    <span>下一页</span></a></li><li><a class="demo" href="javacript:void(0)"><span>末页</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
 
 
 
@@ -354,5 +414,5 @@ class Goodlist extends React.Component {
         )
     }
 }
-Goodlist =withRouter(Goodlist)
+Goodlist = withRouter(Goodlist)
 export default Goodlist

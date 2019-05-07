@@ -216,7 +216,7 @@
     margin-left: 20px;
     
 }
-:global(.active){
+:global(.actives){
     color:rgb(155, 5, 5);
     border-bottom: 1px solid #fff;
     
@@ -349,7 +349,7 @@
     text-align: center;
     line-height: 40px;
     float: left;
-    border-right: 1px solid #dddddd;
+    border-right: 1px solid #dddcdc;
     color: #878787;
 }
 

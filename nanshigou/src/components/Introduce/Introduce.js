@@ -40,7 +40,7 @@ class Introduce extends React.Component {
         }       
     }
      itemNav = (index) => {
-        return index === this.state.idx ? 'active' : '';
+        return index === this.state.idx ? 'actives' : '';
     }
 
     itemCon = (index) => {

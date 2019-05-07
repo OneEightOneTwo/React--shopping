@@ -69,7 +69,7 @@
   height: 360px;
   width: 360px;
   position: relative;
-  overflow: hidden;
+  overflow: hidden; 
 }
 
 :global(.ncs-goods-picture .gallery_wrap .move) {
@@ -254,8 +254,7 @@
 
 :global(.ncs-freight-select .content) {
   background-color: #FFF;
-  display: none;
-  width: 512px;
+
   padding: 0;
   border: 1px solid #D7D7D7;
   position: absolute;
@@ -263,6 +262,8 @@
   top: 0;
   left: 0;
   box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.05);
+  width:505px;
+  height:270px;
 }
 
 :global(.ncs-freight-select .ncs-stock) {
@@ -271,12 +272,12 @@
 
 :global(.ncs-freight-select .ncs-stock .tab) {
   background-color: #FAFAFA;
-  width: 502px;
-  height: 21px;
+  width: 81px;
+  height: 25px;
   float: left;
   border-bottom: solid 1px #E6E6E6;
   overflow: visible;
-  padding: 5px 0 0 10px;
+  padding: 0px;
   margin: 0;
   font-size: 12px
 }
@@ -292,6 +293,7 @@
 }
 
 :global(.ncs-freight-select .ncs-stock .tab .current .hover, .ncs-freight-select .ncs-stock .tab a) {
+
   font-size: 12px;
   line-height: 26px;
   color: #999;
@@ -308,6 +310,7 @@
 }
 
 :global(.ncs-freight-select .ncs-stock .tab .hover) {
+    display:block;
   line-height: 26px;
   color: #000;
   text-decoration: none;
@@ -330,7 +333,6 @@
 }
 
 :global(.ncs-freight-select .ncs-stock .area-list) {
-  display: block;
   clear: both;
   padding: 10px 15px;
   overflow: hidden;
@@ -521,7 +523,7 @@
 }
 
 :global(.ncs-goods-summary dl) {
-  width: 622px;
+  width: 318px;
   height: 25px
 }
 
@@ -825,7 +827,6 @@
 
 :global(.ncs-cart-popup) {
   background-color: #F5F5F5;
-  display: none;
   width: 320px;
   height: 120px;
   border: solid 1px #E6E6E6;
@@ -846,17 +847,20 @@
   text-align: center;
   width: 100%;
   margin: 10px 0 5px 0;
+  position: relative;
 }
 
 :global(.ncs-cart-popup dl dt a) {
   font: 10px/12px Verdana;
   color: #999;
   text-align: center;
-  display: inline-block;
+  display: block;
   width: 12px;
   height: 12px;
-  margin: -5px 5px 0 0;
   cursor: pointer;
+  position: absolute;
+  right:6px;
+  top:0px
 }
 
 :global(.ncs-cart-popup dl dd) {
@@ -1137,8 +1141,8 @@
   color: #555;
   background: url(../../assets/public.png) no-repeat 10px -150px;
   padding-left: 20px;
-  width: 73px;
-  height: 16px;
+  width: 101px;
+  height: 31px;
   float: left;
   padding: 9px 1px 10px 29px;
   position: relative;
@@ -1153,8 +1157,8 @@
   background: url(../../assets/public.png) no-repeat -90px -150px;
   ;
   padding-left: 20px;
-  width: 73px;
-  height: 16px;
+  width: 101px;
+  height: 31px;
   float: left;
   padding: 9px 1px 10px 29px;
   border-top: solid 1px #FFF;
