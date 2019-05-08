@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Switch,Redirect,} from 'dva/router';
+import { Router, Route, Switch,Redirect} from 'dva/router';
 
 
 import Goodslist from './routes/Goodlist/Goodslist';
@@ -32,5 +32,6 @@ function RouterConfig({ history }) {
     </Router>
   );
 }
-
+// RouterConfig = withRouter(RouterConfig)
 export default RouterConfig;
+// export default withRouter(RouterConfig);

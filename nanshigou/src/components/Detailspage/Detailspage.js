@@ -43,7 +43,7 @@ class Detailspage extends React.Component {
 
             disnone: 'none',
 
-            close:'none'
+            close: 'none'
         }
 
 
@@ -106,6 +106,7 @@ class Detailspage extends React.Component {
 
     moveas(e) {
 
+        //获取鼠标坐标
         let X = e.clientX
         let Y = e.clientY
 
@@ -132,7 +133,7 @@ class Detailspage extends React.Component {
             top = this.refs.dbox.offsetWidth - this.refs.move.offsetWidth
         }
 
-        console.log(left, top)
+        //改变小盒子的left和top
         this.setState({
             left: left,
             top: top
@@ -158,6 +159,8 @@ class Detailspage extends React.Component {
 
     }
 
+    
+    //点击向上按钮数量添加
     jia() {
 
         let sum = this.state.val * 1
@@ -166,6 +169,7 @@ class Detailspage extends React.Component {
             val: sum
         })
     }
+    //点击向下按钮数量相减
     jian() {
         let sum = this.state.val * 1
         sum -= 1
@@ -177,6 +181,7 @@ class Detailspage extends React.Component {
         })
     }
 
+    //点击添加购物车和立即购买的效果
     disblock() {
         if (this.state.disnone === 'none') {
             this.setState({
@@ -195,30 +200,30 @@ class Detailspage extends React.Component {
             this.setState({
                 disnone: 'none'
             })
-        } 
+        }
     }
 
     close() {
-         if (this.state.close === 'block') {
+        if (this.state.close === 'block') {
             this.setState({
                 close: 'none'
             })
-        } 
+        }
     }
 
     altre() {
-          if (this.state.close === 'none') {
+        if (this.state.close === 'none') {
             this.setState({
                 close: 'block'
             })
-        } 
+        }
     }
 
     gotoshop() {
-         let { history } = this.props
+        let { history } = this.props
         history.push({
             pathname: '/shop',
-            
+
         })
     }
 
@@ -431,7 +436,7 @@ class Detailspage extends React.Component {
                                         添加购物车
                                                                     </p>
                                     <p className="buynow " title="立即购买" onClick={this.gotoshop.bind(this)}>立即购买</p>
-                                    <div className="ncs-cart-popup" style={{display:this.state.close}}>
+                                    <div className="ncs-cart-popup" style={{ display: this.state.close }}>
                                         <dl>
                                             <dt>
                                                 成功添加到购物车

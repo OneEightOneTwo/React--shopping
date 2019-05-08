@@ -1,7 +1,7 @@
 import React from 'react';
 // import { connect } from 'dva';
 import './LoginRegHeader.css';
-// import LoginRegButton from "../Login_Reg_button/Login_Reg_button"
+import LoginRegButton from "../Login_Reg_button/Login_Reg_button"
 
 class LoginRegHeader extends React.Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class LoginRegHeader extends React.Component {
                         </p>
                     </div>
                     <div className="nsgzhuce">
-                        {/* <LoginRegButton type={this.props.type}></LoginRegButton> */}
+                        <LoginRegButton type={this.props.type}></LoginRegButton>
                     </div>
                 </header>
             </div>
