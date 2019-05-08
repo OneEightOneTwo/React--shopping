@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'dva';
+// import { connect } from 'dva';
 import './LoginRegHeader.css';
 import LoginRegButton from "../Login_Reg_button/Login_Reg_button"
 

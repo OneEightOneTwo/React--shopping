@@ -2,6 +2,8 @@ import React from "react";
 import "./Content.css";
 // dva提供connect方法连接仓库
 import { connect } from 'dva';
+
+import { withRouter } from 'dva/router'
 class Content extends React.Component {
   constructor(props) {
     super(props);
@@ -142,7 +144,7 @@ bgChange3 = index => {
             >
         <div className="nsggoods-pic">
             <div className="goods-pic-link">
-              <a href="" className="li-box J_btn_jump  clearfix">
+              <a href="javacript:viod(0)" className="li-box J_btn_jump  clearfix" onClick={this.gotoshop.bind(this)}>
                   <img src={item.url} alt=""/>
                   
               </a>
@@ -165,7 +167,15 @@ bgChange3 = index => {
         </div>
     </li>
       })
-  }
+    }
+    
+     gotoshop() {
+         let { history } = this.props
+        history.push({
+            pathname: '/deta',
+            
+        })
+    }
 
   renderData1(){
     const { active1 } = this.state;
@@ -1457,6 +1467,8 @@ bgChange3 = index => {
     );
   }
 }
+
+Content = withRouter(Content)
 export default connect((state)=>{
     return state;
 })(Content);

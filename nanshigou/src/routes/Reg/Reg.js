@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import Footer from "../../components/Footer/Footer";
 
-import LoginRegHeader from "../../components/Login_Reg_Header/LoginRegHeader"
+import LoginRegHeader from "../../components/Login/LoginRegHeader"
 function RegPage() {
     return (
         <div>

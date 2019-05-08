@@ -1,12 +1,12 @@
 import React from 'react';
-import { Router, Route, Switch, Redirect, } from 'dva/router';
-// import {Redirect} from 'react-router-dom';
+import { Router, Route, Switch,Redirect} from 'dva/router';
+
 
 import Goodslist from './routes/Goodlist/Goodslist';
 import Details from './routes/Details/Details';
 
 
-// import IndexPage from './routes/IndexPage';
+
 import HomePage from './routes/HomePage/HomePage'
 import Login from './routes/Login/Login'
 import Reg from './routes/Reg/Reg'
@@ -20,17 +20,18 @@ function RouterConfig({ history }) {
         <Route path="/good" exact component={Goodslist} />
         <Route path="/deta" exact component={Details} />
         <Route path="/head" exact component={Header} />
+        <Route path="/home" exact component={HomePage} />
 
         {/* <Route path="/" exact component={IndexPage} /> */}
-        <Route path="/home" exact component={HomePage} />
         <Route path="/login" exact component={Login} />
         <Route path="/reg" exact component={Reg} />
-        <Redirect from="/" to="/good" />
         <Route path="/shop" exact component={ShoppingCar} />
+        <Redirect  from="/" exact to="/home" />
 
       </Switch>
     </Router>
   );
 }
-
+// RouterConfig = withRouter(RouterConfig)
 export default RouterConfig;
+// export default withRouter(RouterConfig);

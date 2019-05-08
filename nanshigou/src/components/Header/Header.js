@@ -1,13 +1,31 @@
 import React from "react";
 import "../../index.css";
 import styles from "./Header.css";
-
+import { withRouter } from 'dva/router'
 class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       width: "1280px"
     };
+  }
+
+  gotohome() {
+    let { history } = this.props
+    history.push({
+      pathname: '/home',
+
+    })
+  }
+
+  gotogood() {
+
+    console.log('123')
+    let { history } = this.props
+    history.push({
+      pathname: '/good',
+
+    })
   }
   render() {
     return (
@@ -68,28 +86,28 @@ class Header extends React.Component {
                 <h3 className={styles.sechH3}>热门搜索：</h3>
                 <ul className={styles.u1}>
                   <li>
-                    <a href="">潮男</a>
+                    <a href="javacript:void(0)">潮男</a>
                   </li>
                   <li>
-                    <a href="">潮男</a>
+                    <a href="javacript:void(0)">潮男</a>
                   </li>
                   <li>
-                    <a href="">潮男</a>
+                    <a href="javacript:void(0)">潮男</a>
                   </li>
                   <li>
-                    <a href="">潮男</a>
+                    <a href="javacript:void(0)">潮男</a>
                   </li>
                   <li>
-                    <a href="">潮男</a>
+                    <a href="javacript:void(0)">潮男</a>
                   </li>
                   <li>
-                    <a href="">潮男</a>
+                    <a href="javacript:void(0)">潮男</a>
                   </li>
                   <li>
-                    <a href="">潮男</a>
+                    <a href="javacript:void(0)">潮男</a>
                   </li>
                   <li>
-                    <a href="">潮男</a>
+                    <a href="javacript:void(0)">潮男</a>
                   </li>
                 </ul>
               </div>
@@ -187,40 +205,40 @@ class Header extends React.Component {
               </div>
             </div>
             <ul className={styles.siteMenu}>
-              <li>
+              <li onClick={this.gotohome.bind(this)}>
                 <a href="" className={styles.current}>
                   首页
                 </a>
               </li>
-              <li>
-                <a href="">潮款服饰</a>
+              <li onClick={this.gotogood.bind(this)}>
+                <a href="javacript:void(0)">潮款服饰</a>
               </li>
-              <li>
-                <a href="">潮款服饰</a>
+              <li onClick={this.gotogood.bind(this)}>
+                <a href="javacript:void(0)">潮款服饰</a>
               </li>
-              <li>
-                <a href="">潮款服饰</a>
+              <li onClick={this.gotogood.bind(this)}>
+                <a href="javacript:void(0)">潮款服饰</a>
               </li>
-              <li>
-                <a href="">潮款服饰</a>
+              <li onClick={this.gotogood.bind(this)}>
+                <a href="javacript:void(0)">潮款服饰</a>
               </li>
-              <li>
-                <a href="">潮款服饰</a>
+              <li onClick={this.gotogood.bind(this)}>
+                <a href="javacript:void(0)">潮款服饰</a>
               </li>
-              <li>
-                <a href="">潮款服饰</a>
+              <li onClick={this.gotogood.bind(this)}>
+                <a href="javacript:void(0)">潮款服饰</a>
               </li>
-              <li>
-                <a href="">潮款服饰</a>
+              <li onClick={this.gotogood.bind(this)}>
+                <a href="javacript:void(0)">潮款服饰</a>
               </li>
-              <li>
-                <a href="">潮款服饰</a>
+              <li onClick={this.gotogood.bind(this)}>
+                <a href="javacript:void(0)">潮款服饰</a>
               </li>
-              <li>
-                <a href="">潮款服饰</a>
+              <li onClick={this.gotogood.bind(this)}>
+                <a href="javacript:void(0)">潮款服饰</a>
               </li>
-              <li>
-                <a href="">潮款服饰</a>
+              <li onClick={this.gotogood.bind(this)}>
+                <a href="javacript:void(0)">潮款服饰</a>
               </li>
             </ul>
             <div className={styles.menud}>
@@ -230,9 +248,11 @@ class Header extends React.Component {
           </div>
         </div>
 
-       
+
       </div>
     );
   }
 }
+
+Header = withRouter(Header)
 export default Header;
